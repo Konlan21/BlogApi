@@ -2,6 +2,21 @@ from fastapi import FastAPI, HTTPException, status
 from typing import Optional
 from pydantic import BaseModel
 import time
+import models
+from database import engine, SessionLocal
+
+
+
+models.Base.metadat.create_all(bind=engine)
+
+
+# Dependency
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
 
 
 app = FastAPI()
