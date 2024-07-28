@@ -15,7 +15,9 @@ from psycopg2.extras import RealDictCursor
 while True:
     try:
         conn = psycopg2.connect(
-            ''' Enter your db connection settings'''
+            host='localhost', database='fastapi', 
+            user='postgres', password='mypassword', 
+            port=5433, cursor_factory=RealDictCursor
     )
         cursor = conn.cursor()
         print('Database connected succesfully!')
@@ -28,7 +30,7 @@ while True:
 
 
 
-
+ 
 @app.get('/')
 def root():
     return {"message": "root"}
