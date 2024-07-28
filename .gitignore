@@ -1,4 +1,5 @@
 store.py
+database.py
 env/
 __pycache__/
 requirements.txt
